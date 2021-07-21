@@ -37,7 +37,7 @@ const IndexPage = () => {
               experince. If you want to see some of my work check out some of
               my <Link to="/devlog">projects</Link>, if you want to learn more
               about me and my interests checkout my <Link to="blog">blog</Link> and
-              if you are intrested in hiring me then you can checkout my <a target="_blank" rel="nofollow" href="/2021-Jan-AlecDivito-Resume.pdf">resume</a>.
+              if you are intrested in hiring me then you can checkout my <a target="_blank" rel="nofollow" href="/2021-Aug-AlecDivito-Resume.pdf">resume</a>.
             </Paragraph>
             <Paragraph>
               If you are not sure about what to read first, I would recommed reading
