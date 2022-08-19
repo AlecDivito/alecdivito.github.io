@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { graphql, StaticQuery } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 import Nav from "./nav";
 import Footer from "./footer";
 import SocialFooter from "./socialFooter";
@@ -32,11 +32,9 @@ query GetNavData {
       title
     }
   }
-  file (relativePath: { eq: "images/footer/alec-head.png" }) {
+  file(relativePath: {eq: "images/footer/alec-head.png"}) {
     childImageSharp {
-      fixed(width: 150) {
-        ...GatsbyImageSharpFixed
-      }
+      gatsbyImageData(width: 150, layout: FIXED)
     }
   }
 }
@@ -61,11 +59,11 @@ const Layout = ({ children }) => {
         <main className="page--content">{children}</main>
         <Footer
           externalLinks={data.allExternalNavJson.nodes}
-          alecHead={<Img fixed={data.file.childImageSharp.fixed} />}
+          alecHead={<GatsbyImage image={data.file.childImageSharp.gatsbyImageData} alt="Headshot of Alec" />}
         />
       </div>
     )} />
-  )
+  );
 }
 
 Layout.propTypes = {

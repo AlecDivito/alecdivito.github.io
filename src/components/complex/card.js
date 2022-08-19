@@ -20,7 +20,7 @@ const Card = ({ image, title, description, status, tags, posts, site, github }) 
         />
         <VerticalList>
             {posts.map(p =>
-                <li className="card__post">
+                <li className="card__post" key={p.content}>
                     <Link to={p.content} className="list list--h list--sb list--aic card__post__link">
                         <span className="card__post__title">{p.title}</span>
                         <span>{p.year}-{p.month}-{p.day}</span>

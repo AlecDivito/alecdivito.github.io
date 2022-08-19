@@ -1,9 +1,9 @@
 import React from "react"
 import PropTypes from 'prop-types';
-import Title from "./simple/title";
-import SocialLink from "./simple/socialLink";
 import FooterSvg from "../assets/footer.svg";
 import "./footer.scss";
+import SocialLink from "./simple/socialLink";
+import Title from "./simple/title";
 
 const Footer = ({
   externalLinks,

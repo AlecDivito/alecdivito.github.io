@@ -1,7 +1,7 @@
 import React from 'react';
 import Proptypes from 'prop-types';
-import './section.scss';
 import Title from './title';
+import './section.scss';
 
 const Section = ({ title, varient, children, className }) => (
     <>
