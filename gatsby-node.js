@@ -16,57 +16,71 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     }
 }
 
-exports.createPages = async ({ graphql, actions: { createPage } }) => {
+exports.createPages = async ({ graphql, actions: { createPage }, reporter }) => {
     const results = await graphql(`
-    {
-        projects: allMdx(filter: {slug: {regex: "\/devlog\/"}}) {
-            edges {
-                node {
-                    fields {
-                        slug
-                    }
-                    frontmatter {
-                        articles
-                    }
+    query {
+        projects: allMdx(filter: {fields: {slug: {regex: "\/devlog\/"}}}) {
+            nodes {
+                id
+                fields {
+                    slug
                 }
+                frontmatter {
+                    articles
+                }
+                internal {
+                    contentFilePath
+                }              
             }
         }
-        blogs: allMdx(filter: {slug: {regex: "\/blogs\/"}}, sort: {order: DESC, fields: frontmatter___publishedDate}) {
-            edges { 
-                node {
-                    fields {
-                        slug
-                    }
+        blogs: allMdx(filter: {fields: {slug: {regex: "\/blogs\/"}}}, sort: {order: DESC, fields: frontmatter___publishedDate}) {
+            nodes {
+                id
+                fields {
+                    slug
+                }
+                internal {
+                    contentFilePath
                 }
             }
         }
     }
     `);
 
-    results.data.projects.edges.forEach(({ node }) => {
+    if (results.errors) {
+        reporter.panicOnBuild("Error loading MDX result", results.errors)
+    }
+
+    const projectTemplate = path.resolve(`./src/templates/project.js`)
+    const blogTemplate = path.resolve(`./src/templates/blogTemplate.js`)
+
+    const projects = results.data.projects.nodes
+    const blogs = results.data.blogs.nodes
+    
+    projects.forEach(node => {
         createPage({
             path: node.fields.slug,
-            component: path.resolve(`./src/templates/project.js`),
+            component: `${projectTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
             context: {
                 // Data passed to context is available
                 // in page queries as GraphQL variables.
+                id: node.id,
                 slug: node.fields.slug,
-                articles: node.frontmatter.articles.map(a => `devlog/${a}`)
+                articles: node.frontmatter.articles.map(a => `/devlog/${a}/`)
             }
         })
     })
 
-    results.data.blogs.edges.forEach(({ node }, index) => {
+    blogs.forEach((node, index) => {
         let articles = [];
-        // console.log(`${results.data.blogs.edges.length} > ${index + 1} = ${results.data.blogs.edges.length < index + 1}`)
-        if (results.data.blogs.edges.length > index + 1) {
-            articles.push(results.data.blogs.edges[index + 1].node.fields.slug.slice(1, -1))
+        if (blogs.length > index + 1) {
+            articles.push(blogs[index + 1].fields.slug.slice(1, -1))
         }
-        // console.log(articles);
         createPage({
             path: node.fields.slug,
-            component: path.resolve(`./src/templates/blogTemplate.js`),
+            component: `${blogTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
             context: {
+                id: node.id,
                 slug: node.fields.slug,
                 articles: articles,
             }

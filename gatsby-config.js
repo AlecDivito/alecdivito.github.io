@@ -6,8 +6,8 @@ module.exports = {
     email: `divitoa@sheridancollege.ca`,
   },
   plugins: [
+    `gatsby-plugin-image`,
     `gatsby-plugin-sass`,
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -49,22 +49,24 @@ module.exports = {
     {
       resolve: `gatsby-plugin-mdx`, // md files to html
       options: {
+        mdxOptions: {
+          remarkPlugins: [
+            require(`remark-gfm`),
+          ]
+        },
         gatsbyRemarkPlugins: [
           `gatsby-remark-copy-linked-files`,
+          'gatsby-remark-prismjs',
           {
             resolve: 'gatsby-remark-images', // manage images found in md
             options: {
-              maxWidth: 1152,
-              linkImagesToOriginal: false,
-              quality: 75,
+              maxWidth: 1024,
+              quality: 90,
+              linkImagesToOriginal: true,
               withWebp: true,
             }
-          },
-          {
-            resolve: 'gatsby-remark-prismjs',
           }
         ],
-        plugins: ['gatsby-remark-images'],
       }
     },
     {
