@@ -91,11 +91,6 @@ $shades-list: (
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-gap: 8px;
-        
-        .gatsby-image-wrapper {
-            // height: 200px;
-    
-        }
     }
 
     &--child {
@@ -114,7 +109,7 @@ $shades-list: (
     }
 }
 
-@media(max-width: $tablet-large - 200px) {
+@media(max-width: ($tablet-large - 200px)) {
     .image--grid {
         grid-template-columns: 1fr;
     }

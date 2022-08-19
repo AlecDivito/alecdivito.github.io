@@ -63,7 +63,7 @@ pages I wanted to include. After deciding on what pages to include I got started
 on a simple designs of how I would expect it too look on each page.
 
 <div class="image--center">
-    <props.images.bomb_finder_sitemap alt="Initial design of the sitemap" caption="sitemap for bomb finder"/>
+    <Bomb_finder_sitemap alt="Initial design of the sitemap" caption="sitemap for bomb finder" />
 </div>
 
 Development initially started with the project using React's smaller alternative
@@ -119,7 +119,8 @@ One of the problems I wasn't able to solve was caused because of the Typescript 
 interact with IndexDB. To understand the problem you need to understand what CRA
 does while compiling the program for development and what it does to compile the
 program for production. While in development mode all of the classes
-name's aren't simplified, this means when you call ```function.constructor.name ```
+name's aren't simplified, this means when you call
+<code class="language-text">function.constructor.name</code>
 you get the name of the class. In production all the class names are simplified
 meaning that the name of the class at runtime has changed. Have the class name
 change is a big deal during runtime because that means we need to manually set
@@ -161,10 +162,10 @@ compared to just hard coding the table name to all of the fields and table.
 
 So when rendering to the screen we want the canvas to run at 60fps. When running
 at this speed we need to keep track of time. To render one would normally call
-to ```Javascript window.requestAnimationFrame(callback)``` and inside the call
-back you would receive a time in micro seconds on how long the current page has
-been opened? The problem comes when a user clicks off the page and then clicks
-on again and the time would sky rocket
+to Javascript <code class="language-text">window.requestAnimationFrame(callback)</code>
+and inside the call back you would receive a time in micro seconds on how long
+the current page has been opened? The problem comes when a user clicks off the
+page and then clicks on again and the time would sky rocket.
 
 ## Project Status
 
@@ -188,16 +189,16 @@ extend the project.
 ## Project Screen Shots
 
 <div class="grid grid--3">
-    <props.images.home alt="Home" />
-    <props.images.game_menu alt="Game menu" />
-    <props.images.manage_templates alt="manage game templates" />
-    <props.images.create_template alt="create game templates" />
-    <props.images.game_in_progress alt="game in progress" />
-    <props.images.game_lose alt="game lost" />
-    <props.images.game_won alt="game won" />
-    <props.images.how_to_play alt="how to play game" />
-    <props.images.settings alt="game settings" />
-    <props.images.stats alt="game statistics" />
+    <Home alt="Home" />
+    <Game_menu alt="Game menu" />
+    <Manage_templates alt="manage game templates" />
+    <Create_template alt="create game templates" />
+    <Game_in_progress alt="game in progress" />
+    <Game_lose alt="game lost" />
+    <Game_won alt="game won" />
+    <How_to_play alt="how to play game" />
+    <Settings alt="game settings" />
+    <Stats alt="game statistics" />
 </div>
 
 ## Reflections
