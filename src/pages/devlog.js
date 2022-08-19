@@ -1,17 +1,17 @@
 import React from "react";
 import { graphql } from 'gatsby';
-import Layout from "../components/layout";
-import SEO from "../components/seo";
-import Img from "gatsby-image";
 import Hero from "../components/hero";
-import SocialLinks from "../components/data/socialLinks";
+import Layout from "../components/layout";
 import Card from '../components/complex/card';
+import Seo from "../components/seo";
+import { GatsbyImage } from "gatsby-plugin-image";
+import SocialLinks from "../components/data/socialLinks";
 import Section from "../components/simple/section";
 import { Common, CommonLeft, CommonRight } from "../components/simple/common";
 
 const DevlogPage = ({ data }) => (
     <Layout>
-        <SEO title="Projects" />
+        <Seo title="Projects" />
         <Hero
             title="Dev Log"
             subTitle="Public documents on past and present projects"
@@ -21,7 +21,7 @@ const DevlogPage = ({ data }) => (
                 <Section title="Projects">
                     {data.allProjectsJson.nodes.map((p) =>
                         <Card
-                            image={<Img className="card__image" fluid={p.image.childImageSharp.fluid} />}
+                            image={<GatsbyImage image={p.image.childImageSharp.gatsbyImageData} alt={p.title} className="card__image" />}
                             title={p.title}
                             description={p.description}
                             status={p.status}
@@ -29,6 +29,7 @@ const DevlogPage = ({ data }) => (
                             site={p.siteLink}
                             github={p.githubLink}
                             posts={p.blogPost}
+                            key={p.title}
                         />
                     )}
                 </Section>
@@ -42,39 +43,35 @@ const DevlogPage = ({ data }) => (
 
 export const query = graphql`
 query GetPersonalProjectsData {
-    allProjectsJson {
-        nodes {
-            id
-            status
-            title
-            status
-            technologies
-            description
-            blogPost {
-                title
-                content
-                year
-                month
-                day
-            }
-            image {
-                childImageSharp {
-                    fluid {
-                        ...GatsbyImageSharpFluid
-                    }
-                }
-            }
-            logo {
-                childImageSharp {
-                  fixed(width: 50, height: 50) {
-                    ...GatsbyImageSharpFixed
-                  }
-                }
-              }
-            githubLink
-            siteLink
+  allProjectsJson {
+    nodes {
+      id
+      status
+      title
+      status
+      technologies
+      description
+      blogPost {
+        title
+        content
+        year
+        month
+        day
+      }
+      image {
+        childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH)
         }
+      }
+      logo {
+        childImageSharp {
+          gatsbyImageData(width: 50, height: 50, layout: FIXED)
+        }
+      }
+      githubLink
+      siteLink
     }
+  }
 }
 `
 

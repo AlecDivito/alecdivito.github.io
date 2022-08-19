@@ -1,9 +1,10 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 import Hero from "../components/hero";
 import Layout from "../components/layout";
-import SEO from "../components/seo"
+import Seo from "../components/seo"
+
 import Widget from "../components/widget";
 import SocialLinks from "../components/data/socialLinks";
 import Section from "../components/simple/section";
@@ -15,7 +16,7 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <SEO title="Home" />
+      <Seo title="Home" />
       <Hero
         title="Alec Di Vito"
         subTitle="You dream it, And I'll build it"
@@ -23,7 +24,8 @@ const IndexPage = () => {
         readMoreLink="/about"
         readMoreText="Learn about me"
       >
-        <Img fluid={data.file.childImageSharp.fluid}
+        <GatsbyImage
+          image={data.file.childImageSharp.gatsbyImageData}
           alt="Alec Divito 3D Profile Picture" />
       </Hero>
       <Common>
@@ -51,7 +53,10 @@ const IndexPage = () => {
                 description={p.shortDescription}
                 tags={p.technologies}
                 status={p.status}
-                logo={<Img fixed={p.logo.childImageSharp.fixed} style={{ borderRadius: '100%' }} alt={p.company} />}
+                logo={<GatsbyImage
+                  image={p.logo.childImageSharp.gatsbyImageData}
+                  style={{ borderRadius: '100%' }}
+                  alt={p.company ?? ''} />}
                 readMore={p.blogPost.map(b => b.content)[0] ?? null}
               />
             )}
@@ -75,7 +80,10 @@ const IndexPage = () => {
                 description={w.description}
                 tags={w.utilized}
                 date={`${w.startDate}-${w.endDate}`}
-                logo={<Img fixed={w.logo.childImageSharp.fixed} style={{ borderRadius: '100%' }} alt={w.company} />}
+                logo={<GatsbyImage
+                  image={w.logo.childImageSharp.gatsbyImageData}
+                  style={{ borderRadius: '100%' }}
+                  alt={w.company} />}
               />
             )}
           </Section>
@@ -87,7 +95,10 @@ const IndexPage = () => {
                 description={w.description}
                 // tags={w.utilized}
                 date={`${w.startDate}-${w.endDate}`}
-                logo={<Img fixed={w.logo.childImageSharp.fixed} style={{ borderRadius: '100%' }} alt={w.school} />}
+                logo={<GatsbyImage
+                  image={w.logo.childImageSharp.gatsbyImageData}
+                  style={{ borderRadius: '100%' }}
+                  alt={w.school} />}
               />
             )}
           </Section>
@@ -107,107 +118,102 @@ const IndexPage = () => {
         </CommonLeft>
       </Common>
     </Layout >
-  )
+  );
 }
 
 const query = graphql`
-  query HomePageData {
-    work: allWorkJson {
-      nodes {
-        id
-        company
-        position
-        startDate
-        endDate
-        utilized
-        description
-        logo {
-          childImageSharp {
-            fixed(width: 50, height: 50) {
-              ...GatsbyImageSharpFixed
-            }
-          }
-        }
-      }
-    }
-    volunteer: allVolunteerJson {
-      nodes {
-        id
-        description
-        job
-        location
-        time
-      }
-    }
-    school: allSchoolJson {
-      nodes {
-        id
-        achievement
-        endDate
-        gpa
-        startDate
-        school
-        program
-        description
-        logo {
-          childImageSharp {
-            fixed(width: 50, height: 50) {
-              ...GatsbyImageSharpFixed
-            }
-          }
-        }
-      }
-    }
-    allProjectsJson {
-      nodes {
-        id
-        siteLink
-        shortDescription
-        title
-        stage
-        status
-        githubLink
-        technologies
-        blogPost {
-          content
-          year
-          month
-          day
-        }
-        logo {
-          childImageSharp {
-            fixed(width: 50, height: 50) {
-              ...GatsbyImageSharpFixed
-            }
-          }
-        }
-      }
-    }
-    blogs: allMdx(filter: {slug: {regex: "/blogs/"}}, sort: {order: DESC, fields: frontmatter___publishedDate}) {
-      edges {
-        node {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            totalTime
-            tags
-            description
-            publishedDate
-          }
-          id
-        }
-      }
-    }
-    file (relativePath: { eq: "images/index/alec.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 280) {
-          ...GatsbyImageSharpFluid
+query HomePageData {
+  work: allWorkJson {
+    nodes {
+      id
+      company
+      position
+      startDate
+      endDate
+      utilized
+      description
+      logo {
+        childImageSharp {
+          gatsbyImageData(width: 50, height: 50, layout: FIXED)
         }
       }
     }
   }
+  volunteer: allVolunteerJson {
+    nodes {
+      id
+      description
+      job
+      location
+      time
+    }
+  }
+  school: allSchoolJson {
+    nodes {
+      id
+      achievement
+      endDate
+      gpa
+      startDate
+      school
+      program
+      description
+      logo {
+        childImageSharp {
+          gatsbyImageData(width: 50, height: 50, layout: FIXED)
+        }
+      }
+    }
+  }
+  allProjectsJson {
+    nodes {
+      id
+      siteLink
+      shortDescription
+      title
+      stage
+      status
+      githubLink
+      technologies
+      blogPost {
+        content
+        year
+        month
+        day
+      }
+      logo {
+        childImageSharp {
+          gatsbyImageData(width: 50, height: 50, layout: FIXED)
+        }
+      }
+    }
+  }
+  blogs: allMdx(
+    filter: {fields: { slug: {regex: "/blogs/"}}}
+    sort: {order: DESC, fields: frontmatter___publishedDate}
+  ) {
+    edges {
+      node {
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+          totalTime
+          tags
+          description
+          publishedDate
+        }
+        id
+      }
+    }
+  }
+  file(relativePath: {eq: "images/index/alec.png"}) {
+    childImageSharp {
+      gatsbyImageData(width: 280, layout: CONSTRAINED)
+    }
+  }
+}
 `;
 
 export default IndexPage

@@ -1,65 +1,60 @@
 import React from 'react';
-import SEO from "../components/seo";
-import { MDXRenderer } from "gatsby-plugin-mdx";
+import Seo from "../components/seo";
+import { GatsbyImage } from "gatsby-plugin-image";
 import { graphql } from 'gatsby';
-import { HorizontalList } from '../components/simple/list';
 import Hero from "../components/hero";
-import TableOfContents from '../components/complex/tableOfContents';
-import Img from "gatsby-image";
 import Layout from "../components/layout";
 import Article from '../components/simple/article';
+import TableOfContents from '../components/complex/tableOfContents';
+import LinkedArticle from '../components/simple/linkedArticle';
+import { HorizontalList } from '../components/simple/list';
 import Section from "../components/simple/section";
 import { Common, CommonLeft, CommonRight } from "../components/simple/common";
-import LinkedArticle from '../components/simple/linkedArticle';
+import { MDXProvider } from '@mdx-js/react';
 
 export const query = graphql`
-    query($slug: String!, $articles: [String!]) {
-        allMdx(filter: { slug: {in: $articles}}) {
-            nodes {
-                slug
-                frontmatter {
-                    title
-                    subTitle
-                }
-            }
-        }        
-        mdx(fields: {slug: {eq: $slug}}) {
-            frontmatter {
-                author
-                publishedDate
-                title
-                subTitle
-                tags
-                description
-                images {
-                    childImageSharp {
-                        fluid {
-                            base64
-                            tracedSVG
-                            aspectRatio
-                            src
-                            srcSet
-                            srcWebp
-                            srcSetWebp
-                            sizes
-                            originalImg
-                            originalName
-                            presentationWidth
-                            presentationHeight
-                        }
-                    }
-                }
-            }
-            fields {
-                slug
-            }
-            body
-            tableOfContents
-        }
+query ($id: String!, $articles: [String!]) {
+  allMdx(filter: {fields: {slug: {in: $articles}}}) {
+    nodes {
+      fields {
+        slug
+      }
+      frontmatter {
+        title
+        subTitle
+      }
     }
+  }
+  mdx(id: {eq: $id }) {
+    frontmatter {
+      author
+      publishedDate
+      title
+      subTitle
+      tags
+      description
+      images {
+        childImageSharp {
+          gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+          fluid {
+            originalName
+          }
+        }
+      }
+    }
+    fields {
+      slug
+    }
+    tableOfContents
+  }
+}
 `;
 
-const BlogTemplate = ({ data }) => {
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+const BlogTemplate = ({ data, children }) => {
     const blog = data.mdx;
     const articles = data.allMdx;
     let images = {};
@@ -67,9 +62,10 @@ const BlogTemplate = ({ data }) => {
         blog.frontmatter.images.forEach((image, i) => {
             const { childImageSharp } = image;
             let name = childImageSharp.fluid.originalName.split(".")[0];
+            let componentName = capitalizeFirstLetter(name)
             let component = ({ alt, caption }) => (
                 <figure>
-                    <Img fluid={childImageSharp.fluid} alt={alt} />
+                    <GatsbyImage image={childImageSharp.gatsbyImageData} alt={alt} />
                     {(caption && caption.length > 0)
                         ? <figcaption>{caption}</figcaption>
                         : null
@@ -77,16 +73,16 @@ const BlogTemplate = ({ data }) => {
                 </figure>
             )
             // if we have a childImageShape, we can just get the name normally
-            images[name] = component;
+            images[componentName] = component;
         });
     }
 
     return (
         <Layout>
-            <SEO title={blog.frontmatter.title}
+            <Seo title={blog.frontmatter.title}
                 description={blog.frontmatter.description}>
                 <script defer={true} src="/scripts/toc.js" />
-            </SEO>
+            </Seo>
             <Hero title={blog.frontmatter.title}
                 subTitle={blog.frontmatter.subTitle}
                 tags={blog.frontmatter.tags}
@@ -96,13 +92,15 @@ const BlogTemplate = ({ data }) => {
             <Common>
                 <CommonRight>
                     <Article>
-                        <MDXRenderer images={images}>{blog.body}</MDXRenderer>
+                      <MDXProvider components={images}>
+                        {children}
+                      </MDXProvider>
                     </Article>
                     <Section title="Continue Reading More..." className="section--tm">
                         <HorizontalList>
                             {articles.nodes.map(item =>
-                                <LinkedArticle to={`/${item.slug}`}
-                                    key={item.slug}
+                                <LinkedArticle to={`/${item.fields.slug}`}
+                                    key={item.fields.slug}
                                     title={item.frontmatter.title}
                                     description={item.frontmatter.subTitle} />
                             )}

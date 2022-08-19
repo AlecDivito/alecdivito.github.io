@@ -73,7 +73,7 @@
 
         &__text {
             text-align: center;
-            width: $tablet-large / 1.5;
+            width: calc($tablet-large / 1.5);
             margin: 2rem auto;
         }
     }

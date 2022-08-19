@@ -1,9 +1,9 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
 import Hero from "../components/hero"
+import Layout from "../components/layout"
 import Widget from "../components/widget";
+import Seo from "../components/seo"
 import SocialLinks from "../components/data/socialLinks";
 import Section from "../components/simple/section";
 import { Common, CommonLeft, CommonRight } from "../components/simple/common";
@@ -11,7 +11,7 @@ import { Common, CommonLeft, CommonRight } from "../components/simple/common";
 
 const BlogDirectoryPage = ({ data }) => (
   <Layout>
-    <SEO title="Alec Di Vito Blog" />
+    <Seo title="Alec Di Vito Blog" />
     <Hero
       title="Blog"
       subTitle="I thought it, so I wrote it"
@@ -40,7 +40,7 @@ const BlogDirectoryPage = ({ data }) => (
 
 export const query = graphql`
 query BlogPageData {
-  blogs: allMdx(filter: {slug: {regex: "/blogs/"}}, sort: {order: DESC, fields: frontmatter___publishedDate}) {
+  blogs: allMdx(filter: {fields: { slug: {regex: "/blogs/"}}}, sort: {order: DESC, fields: frontmatter___publishedDate}) {
     edges {
       node {
         fields {

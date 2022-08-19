@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import "./contact.scss";
 import Header from "../components/header";
 
@@ -47,7 +47,7 @@ const Button = ({type, text}) => (
 
 const ContactPage = () => (
   <Layout>
-    <SEO title="Contact Me" />
+    <Seo title="Contact Me" />
     <div className="contact">
       <Header text="Why not get in touch!" isCenter={true} />
       <p className="contact__text">
