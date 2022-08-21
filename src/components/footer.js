@@ -17,8 +17,8 @@ const Footer = ({
           <ul className="footer__list">{externalLinks.map(s => <li key={s.id} className="footer__list__item"><SocialLink className="footer__list__item--social" invert {...s} /></li>)}</ul>
         </div>
         <div className="footer--column footer--index">
-          <Title invert={true} variant="h4">aspiring cloud developer</Title>
-          <Title invert={true} variant="h4">
+          <Title invert={true} variant="h4">Software Developer</Title>
+          <Title invert={true} variant="h4" className="footer__email--mobile">
             <a className="footer__email" href="mailto:divitoa@sheridancollege.ca">
               divitoa@sheridancollege.ca
             </a>

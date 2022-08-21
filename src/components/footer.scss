@@ -28,8 +28,8 @@
     &--curve {
         position: absolute;
         top: -160px;
-        right: 0px;
-        left: 0px;
+        right: -0.99px;
+        left: -1px;
         z-index: 10;
 
         svg {
@@ -62,10 +62,14 @@
         flex-direction: row;
 
         &__item {
-            margin-right: 1rem;
+            margin-right: 2rem;
+
+            &:last-child {
+                margin-right: 0rem;
+            }
 
             &--social {
-                grid-template-columns: 30px 1fr;
+                grid-template-columns: 30px 1fr !important;
             }
         }
     }
@@ -145,6 +149,19 @@
             .title {
                 margin-bottom: 1rem;
             }
+        }
+
+        &__list {
+            margin-top: 1.5rem;
+            flex-direction: column;
+    
+            &__item {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        &__email--mobile {
+            font-size: 1.25em;
         }
     }
 }
