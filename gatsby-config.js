@@ -24,7 +24,15 @@ module.exports = {
       }
     },
     `gatsby-transformer-sharp`, // images
-    `gatsby-plugin-sharp`,      // image optimization
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`, `avif`],
+          placeholder: 'blurred'
+        }
+      }
+    },      // image optimization
     `gatsby-transformer-json`,  // graphql for data files
     // {
     //   resolve: `gatsby-transformer-remark`,
