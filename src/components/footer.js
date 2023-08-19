@@ -19,9 +19,9 @@ const Footer = ({
         <div className="footer--column footer--index">
           <Title invert={true} variant="h4">Software Developer</Title>
           <Title invert={true} variant="h4" className="footer__email--mobile">
-            <a className="footer__email" href="mailto:divitoa@sheridancollege.ca">
-              divitoa@sheridancollege.ca
-            </a>
+            <span className="footer__email">
+              View my resume for my email
+            </span>
           </Title>
         </div>
         <div className="footer--index footer__bottom">

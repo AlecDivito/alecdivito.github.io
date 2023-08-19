@@ -17,3 +17,8 @@ Are personal websites ever finished??? First draft with most of the important in
 
 Keep an up-to-date project that shows off some of my web design skills and other projects that may not get much attention if not posted somewhere.
 
+## Install
+
+```bash
+npm install --legacy-peer-deps
+```

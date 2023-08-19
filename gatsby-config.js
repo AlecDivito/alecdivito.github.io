@@ -34,17 +34,17 @@ module.exports = {
       }
     },      // image optimization
     `gatsby-transformer-json`,  // graphql for data files
-    // {
-    //   resolve: `gatsby-transformer-remark`,
-    //   options: {
-    //     plugins: [`gatsby-remark-images`],
-    //     // options: {
-    //     //   maxWidth: 590,
-    //     //   sizeByPixelDensity: true,
-    //     //   withWebp: true
-    //     // }
-    //   }
-    // },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [`gatsby-remark-images`],
+        options: {
+          maxWidth: 590,
+          sizeByPixelDensity: true,
+          withWebp: true
+        }
+      }
+    },
     {
       resolve: 'gatsby-remark-images', // manage images found in md
       options: {

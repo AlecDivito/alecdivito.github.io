@@ -28,8 +28,8 @@
     &--curve {
         position: absolute;
         top: -160px;
-        right: -0.99px;
-        left: -1px;
+        right: 0;
+        left: 0;
         z-index: 10;
 
         svg {
@@ -51,7 +51,7 @@
 
         &--head {
             position: absolute;
-            bottom:-50px;
+            bottom: -50px;
             left: 0px;
         }
     }
@@ -93,7 +93,7 @@
     //                 display: flex;
     //                 flex-wrap: wrap;
     //             }
-    
+
     //             li {
     //                 flex: 1 0 33%;
     //                 margin: 8px 8px 8px 0px;
@@ -154,7 +154,7 @@
         &__list {
             margin-top: 1.5rem;
             flex-direction: column;
-    
+
             &__item {
                 margin-bottom: 1.5rem;
             }
@@ -170,15 +170,15 @@
     .footer {
         &__top {
             flex-direction: row;
-    
+
             &__about {
                 width: 50%;
             }
-    
+
             &__blog {
                 width: 25%;
             }
-    
+
             &__site {
                 width: 25%;
             }
@@ -195,7 +195,7 @@
                 line-height: 4rem;
             }
 
-            > * {
+            >* {
                 width: 75%;
             }
         }

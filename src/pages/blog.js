@@ -4,9 +4,8 @@ import Hero from "../components/hero"
 import Layout from "../components/layout"
 import Widget from "../components/widget";
 import Seo from "../components/seo"
-import SocialLinks from "../components/data/socialLinks";
 import Section from "../components/simple/section";
-import { Common, CommonLeft, CommonRight } from "../components/simple/common";
+import { Common, CommonCenter } from "../components/simple/common";
 
 
 const BlogDirectoryPage = ({ data }) => (
@@ -15,46 +14,44 @@ const BlogDirectoryPage = ({ data }) => (
     <Hero
       title="Blog"
       subTitle="I thought it, so I wrote it"
-      tags={["Thesis", "Interests", "Rabit Holes"]} />
-    <Common>
-      <CommonRight>
+      tags={["Projects", "Interests", "Whatever I want! It's my website 🫣"]} />
+    <Common className="common--top justify-center">
+      <CommonCenter>
         <Section title="Posts">
-          {data.blogs.edges.map(b =>
-            <Widget title={b.node.frontmatter.title}
-              key={b.node.id}
-              tags={b.node.frontmatter.tags}
-              readMore={b.node.fields.slug}
-              description={b.node.frontmatter.description}
-              date={b.node.frontmatter.publishedDate}
+          {data.blogs.nodes.map(b =>
+            <Widget title={b.frontmatter.title}
+              key={b.id}
+              tags={b.frontmatter.tags}
+              readMore={b.fields.slug}
+              description={b.frontmatter.description}
+              date={b.frontmatter.publishedDate}
             />
           )}
         </Section>
-        <Section title="More coming soon!!" />
-      </CommonRight>
-      <CommonLeft>
-        <SocialLinks />
-      </CommonLeft>
+      </CommonCenter>
     </Common>
   </Layout>
 )
 
 export const query = graphql`
 query BlogPageData {
-  blogs: allMdx(filter: {fields: { slug: {regex: "/blogs/"}}}, sort: {order: DESC, fields: frontmatter___publishedDate}) {
-    edges {
-      node {
-        fields {
-          slug
-        }
-        frontmatter {
-          title
-          totalTime
-          tags
-          description
-          publishedDate
-        }
-        id
+  blogs: allMdx(
+	  sort: [
+      { internal: { contentFilePath:DESC } }
+    ]
+  ) {
+    nodes {
+      fields {
+        slug
       }
+      frontmatter {
+        title
+        totalTime
+        tags
+        description
+        publishedDate
+      }
+      id
     }
   }
 }

@@ -3,11 +3,11 @@
     "widgets": [
       {
         "title": "I am...",
-        "description": "a Full Stack Developer and a 4th year Sheridan College student in Mobile Computing graduating december 2021 with an interest in cloud computing, full stack development and mobile development. My experience includes working at RBC on their cloud team where I helped develop their next generation pipeline for bank developers on Kubernetes to researching fall detection through The Centre for Mobile Innovation at Sheridan College. I’ve graduated once already from Sheridan College with an advanced diploma from Software Development and Network Engineering. In addition I have been to 4 hackathons where in one of them I have placed 3rd. Technology excites me a lot and I’m very excited playing with emerging technologies such as Virtual Reality and server less computing."
+        "description": "a Full Stack Developer and a graduate from Sheridan College Mobile Computing program. I have an interest in cloud computing, distributed actor model systems, programming languages that protect you from yourself (rust 🦀) and full stack development. My experience includes working at RBC on their platform teams where I've learned about Kubernetes, Terraform, and Azure. I've also worked for a startup called Ownr that helped to automate creating small business in canada! While in school, I had an interest in machine learning and did some research into fall detection through The Centre for Mobile Innovation at Sheridan College. Technology excites me a lot and I like to spend my free time on it, right now that trying to create my own serverless platform using web assembly."
       },
       {
         "title": "I also...",
-        "description": "Cycle, ice skate, snowboard and white water canoe. I'm a cat lover but dogs are also cool I guess. I am the vice president of the Hackademics club at Sheridan college and we are hosting our annual hackathon; hackville this year. This is hosted for Sheridan students by Sheridan students with +12,000 CAD in funding! It's also the first online Hackville ever (Thanks Covid)! "
+        "description": "Cycle, ice skate, snowboard and white water canoe. I'm a cat lover but dogs are also cool I guess. While in school I was the vice president of the Hackademics club at Sheridan college and we hosted a hackathon."
       }
     ],
     "info": [
@@ -15,16 +15,16 @@
         "title": "I have...",
         "items": [
           {
-            "title": "6 Years",
-            "subTitle": "Done 6 years of programming"
+            "title": "7 Years",
+            "subTitle": "Done 7 years of programming"
           },
           {
             "title": "2 Hacks",
             "subTitle": "Helped organize 2 Hackathons"
           },
           {
-            "title": "2 Years",
-            "subTitle": "Worked 2 years professionally"
+            "title": "4 Years",
+            "subTitle": "Worked 4 years professionally"
           },
           {
             "title": "15 Langs",
@@ -43,7 +43,7 @@
           {
             "title": "Hiked",
             "image": "/svgs/about/have/mountain.svg",
-            "subTitle": "Concurred the Sleeping Giant"
+            "subTitle": "Concurred the <a target='_blank' rel='nofollow' href='https://www.ontarioparks.com/park/sleepinggiant'>Sleeping Giant</a>"
           },
           {
             "title": "Tried",
@@ -61,24 +61,29 @@
         "title": "Right now I am working on...",
         "items": [
           {
-            "image": "/svgs/about/currently/hackville.svg",
-            "bigImage": true,
-            "title": "Hackville 2021",
-            "link": "https://www.hackville.club",
-            "subTitle": "Student run virtual hackathon"
-          },
-          {
             "image": "/svgs/about/currently/wasmcompute.svg",
             "bigImage": true,
             "title": "WASM Compute",
-            "link": "https://wasmcompute.com",
             "subTitle": "Experimental Serverless Platform for Web Assembly"
+          }
+        ]
+      },
+      {
+        "title": "In the past I...",
+        "items": [
+          {
+            "image": "/svgs/about/currently/hackville.svg",
+            "bigImage": true,
+            "title": "Hackville 2021",
+            "link": "https://hackville.io/",
+            "subTitle": "Helped run Hackville and Raised $+12,000"
           },
           {
             "bigImage": true,
             "image": "/svgs/about/currently/thesis.svg",
             "title": "Thesis",
-            "subTitle": "A thesis reviewing stateful serverless functions"
+            "link": "/survey-of-serverless-and-virtual-actor-frameworks.pdf",
+            "subTitle": "A thesis surveying the state of serverless and virtual actor frameworks"
           }
         ]
       }

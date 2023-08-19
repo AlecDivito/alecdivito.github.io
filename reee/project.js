@@ -2,16 +2,16 @@ import React from 'react';
 import { graphql } from "gatsby";
 import { MDXProvider } from '@mdx-js/react';
 import { GatsbyImage } from "gatsby-plugin-image";
-import Hero from "../components/hero";
-import Layout from "../components/layout";
-import Seo from "../components/seo";
-import Article from '../components/simple/article';
-import TableOfContents from '../components/complex/tableOfContents';
-import LinkedArticle from '../components/simple/linkedArticle';
-import { HorizontalList } from '../components/simple/list';
-import Header from '../components/header'
-import Section from '../components/simple/section';
-import { Common, CommonLeft, CommonRight } from "../components/simple/common";
+import Hero from "../src/components/hero";
+import Layout from "../src/components/layout";
+import Seo from "../src/components/seo";
+import Article from '../src/components/simple/article';
+import TableOfContents from '../src/components/complex/tableOfContents';
+import LinkedArticle from '../src/components/simple/linkedArticle';
+import { HorizontalList } from '../src/components/simple/list';
+import Header from '../src/components/header'
+import Section from '../src/components/simple/section';
+import { Common, CommonLeft, CommonRight } from "../src/components/simple/common";
 
 export const query = graphql`
 query ($slug: String!, $articles: [String!]) {
@@ -59,7 +59,7 @@ query ($slug: String!, $articles: [String!]) {
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
-}  
+}
 
 const ProjectTemplate = ({ data, children }) => {
     const project = data.mdx;

@@ -14,6 +14,7 @@ $offset-height: 60px;
     background-color: $primary-color;
     box-sizing: border-box;
     padding: 1rem 0rem;
+    padding-left: 3rem;
 
     &--container {
         margin-top: $offset-height;
@@ -42,7 +43,7 @@ $offset-height: 60px;
     &--p0 {
         padding: 0px;
     }
-    
+
     &__title {
         font-size: 3em;
         color: $shade-0;
@@ -98,12 +99,6 @@ $offset-height: 60px;
     }
 }
 
-@media (max-width: $desktop) {
-    .hero {
-        padding-left: 3rem;
-    }
-}
-
 @media (max-width: $desktop-small) {
     .hero {
         &--flex {
@@ -133,6 +128,7 @@ $offset-height: 60px;
 
         &__curve {
             bottom: -53px;
+
             svg {
                 height: 50px;
             }
@@ -146,11 +142,11 @@ $offset-height: 60px;
 
 @media (max-width: $phone) {
     .hero {
-        
+
         &--p0 {
             padding: unset;
         }
-        
+
         &--content {
             padding: 0rem 1rem;
         }
@@ -158,6 +154,7 @@ $offset-height: 60px;
 
         &__curve {
             bottom: -23px;
+
             svg {
                 height: 20px;
             }

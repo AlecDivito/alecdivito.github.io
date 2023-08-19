@@ -20,7 +20,7 @@ const IndexPage = () => {
       <Hero
         title="Alec Di Vito"
         subTitle="You dream it, And I'll build it"
-        tags={["Wasm Expert", "Cloud", "Full stack"]}
+        tags={["Full stack", "Rust", "Node.js", "Actor model", "Cloud"]}
         readMoreLink="/about"
         readMoreText="Learn about me"
       >
@@ -32,18 +32,23 @@ const IndexPage = () => {
         <CommonRight>
           <Section title="Hi There...">
             <Paragraph>
-              I'm Alec, a developer first and a student second. I'm very experinced
-              in full stack web development and have an interest in cloud computing.
-              Thank you for visiting my website. I've spent a lot of time and a
-              lot of love trying to get things right so I hope you enjoy the
-              experince. If you want to see some of my work check out some of
-              my <Link to="/devlog">projects</Link>, if you want to learn more
-              about me and my interests checkout my <Link to="blog">blog</Link> and
-              if you are intrested in hiring me then you can checkout my <a target="_blank" rel="nofollow" href="/2021-Jan-AlecDivito-Resume.pdf">resume</a>.
+              I'm Alec, a Full Stack Developer that enjoys creating unique web
+              experinces for users while also building maintainable code for
+              future developers to use. I mainly develop programs using Node.js
+              professionally and use Rust for most (if not all) of my side projets.
+              I enjoy thinking about the infrastructure that runs our code which
+              has led me to many cloud related positions.
             </Paragraph>
             <Paragraph>
-              If you are not sure about what to read first, I would recommed reading
-              about how I <Link to="/devlog/website-update-1">updated this website.</Link>
+              I've written about a some of programming I've done over the years
+              and have them documented in my <Link to="blog">blog</Link>. If you
+              are visiting this website because you are interested in hiring me,
+              then you can checkout my{' '}
+              <a target="_blank" rel="nofollow" href="/2024-AlecDivito-Resume.pdf">resume</a>.
+            </Paragraph>
+            <Paragraph>
+              Wondering what to read first? Why not read about how I{' '}
+              <Link to="/blog/2022-04-10_website-update-1">updated this website.</Link>
             </Paragraph>
           </Section>
           <Section title="Projects">
@@ -58,17 +63,6 @@ const IndexPage = () => {
                   style={{ borderRadius: '100%' }}
                   alt={p.company ?? ''} />}
                 readMore={p.blogPost.map(b => b.content)[0] ?? null}
-              />
-            )}
-          </Section>
-          <Section title="Blog">
-            {data.blogs.edges.map(b =>
-              <Widget title={b.node.frontmatter.title}
-                key={b.node.id}
-                tags={b.node.frontmatter.tags}
-                readMore={b.node.fields.slug}
-                description={b.node.frontmatter.description}
-                date={b.node.frontmatter.publishedDate}
               />
             )}
           </Section>
@@ -185,26 +179,6 @@ query HomePageData {
         childImageSharp {
           gatsbyImageData(width: 50, height: 50, layout: FIXED)
         }
-      }
-    }
-  }
-  blogs: allMdx(
-    filter: {fields: { slug: {regex: "/blogs/"}}}
-    sort: {order: DESC, fields: frontmatter___publishedDate}
-  ) {
-    edges {
-      node {
-        fields {
-          slug
-        }
-        frontmatter {
-          title
-          totalTime
-          tags
-          description
-          publishedDate
-        }
-        id
       }
     }
   }

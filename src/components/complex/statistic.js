@@ -9,10 +9,10 @@ const Statistic = ({ image, bigImage, title, subTitle, link }) => (
     <VerticalList className="statistic list--aic">
         {image ? <img className={`statistic__img ${bigImage ? "statistic__img--big" : ""}`} src={image} alt={title} /> : null}
         {title ? <Title variant="h5" className="statistic__title">
-            {link ? <a className="statistic__title" href={link}>{title}</a> : title}
+            {link ? <a target='_blank' rel="nofollow" className="statistic__title" href={link}>{title}</a> : title}
         </Title> : null
         }
-        <Paragraph>{subTitle}</Paragraph>
+        <Paragraph><span dangerouslySetInnerHTML={{ __html: subTitle }}></span></Paragraph>
     </VerticalList>
 )
 

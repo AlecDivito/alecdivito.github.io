@@ -8,11 +8,14 @@
     &__header {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: start;
 
         &--date {
+            display: block;
+            margin-top: 0.5rem;
             color: $shade-7;
             font-size: 1em;
+            white-space: nowrap;
         }
     }
 
@@ -75,17 +78,23 @@
                 margin: 0rem;
             }
 
-            &--logo, &--status {
+            &--logo,
+            &--status {
                 visibility: hidden;
                 display: none;
             }
         }
+
         &__subTitle {
             margin: 1rem 0rem;
         }
+
         &__tags {
             margin: 1rem 0rem;
-            * { margin-right: 0.5rem }
+
+            * {
+                margin-right: 0.5rem
+            }
         }
 
         &__header {

@@ -17,7 +17,7 @@ const AboutPage = () => {
   return (
     <Layout>
       <Seo title="About Me" />
-       <Hero
+      <Hero
         title="About Alec"
         subTitle="Professional and Personal"
         tags={["Programmer", "Engineer", "Cyclist"]}
@@ -64,7 +64,7 @@ const AboutPage = () => {
         <CommonLeft>
           <SocialLinks />
         </CommonLeft>
-      </Common> 
+      </Common>
     </Layout>
   );
 }
@@ -107,7 +107,7 @@ query AboutMeQuery {
   }
   file(relativePath: {eq: "images/about/Profile_Pic_Alec_Divito.png"}) {
     childImageSharp {
-      gatsbyImageData(width: 220, height: 220, layout: FIXED)
+      gatsbyImageData(width: 220, height: 220, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF], layout: FIXED)
     }
   }
 }
