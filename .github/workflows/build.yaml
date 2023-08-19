@@ -28,6 +28,9 @@ jobs:
       - name: Install Gatsby CLI
         run: npm install -g gatsby-cli
 
+      - name: Install other depedancies
+        run: npm install @parcel/watcher
+
       - name: Build
         run: gatsby build
 
