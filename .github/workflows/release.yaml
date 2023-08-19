@@ -25,8 +25,9 @@ jobs:
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
-        with:
-          node-version: "lts/*"
+
+      - name: Install Dependencies
+        run: apt-get install make gcc python3
 
       - name: Install Node Dependencies
         run: npm install
@@ -36,6 +37,9 @@ jobs:
 
       - name: Build
         run: gatsby build
+
+      - name: Verify build
+        run: ls -la public
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4

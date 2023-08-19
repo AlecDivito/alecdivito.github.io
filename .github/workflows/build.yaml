@@ -16,6 +16,9 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v1
 
+      - name: Install Dependencies
+        run: apt-get install make gcc python3
+
       - name: Install Project Dependencies
         run: npm install
 
