@@ -27,7 +27,8 @@ jobs:
         uses: actions/setup-node@v3
 
       - name: Install Dependencies
-        run: apt-get install make gcc python3
+        run: |
+          sudo apt-get -y install make gcc python3
 
       - name: Install Node Dependencies
         run: npm install
