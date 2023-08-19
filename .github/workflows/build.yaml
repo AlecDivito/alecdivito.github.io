@@ -8,26 +8,22 @@ name: Build
 
 jobs:
   build:
-    name: Check
+    name: Try Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-      # - name: Cache node modules
-      #   id: cache-npm
-      #   uses: actions/cache@v3
-      #   env:
-      #     cache-name: cache-node-modules
-      #   with:
-      #     path: ~/.npm
-      #     key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-build-${{ env.cache-name }}-
-      #       ${{ runner.os }}-build-
-      #       ${{ runner.os }}-
-      # - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
-      #   name: List the state of node modules
-      #   continue-on-error: true
-      #   run: npm list
-      - run: npm ci
-      - run: npm run build
+
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+
+      - name: Install Project Dependencies
+        run: npm ci
+
+      - name: Install Gatsby CLI
+        run: npm install -g gatsby-cli
+
+      - name: Build
+        run: gatsby build
+
+      - name: Verify build
+        run: ls -la public

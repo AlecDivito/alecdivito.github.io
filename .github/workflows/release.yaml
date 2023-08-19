@@ -31,8 +31,11 @@ jobs:
       - name: Install Node Dependencies
         run: npm ci
 
-      - name: Build Pages
-        run: npm run build
+      - name: Install Gatsby CLI
+        run: npm install -g gatsby-cli
+
+      - name: Build
+        run: gatsby build
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
