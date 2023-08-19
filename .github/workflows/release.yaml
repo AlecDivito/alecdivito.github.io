@@ -1,0 +1,53 @@
+on:
+  push:
+    branches:
+      - master
+
+name: Release
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    environment: Publish
+    name: Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: latest
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get -y install make gcc python3
+
+      - name: Install Node Dependencies
+        run: npm install
+
+      - name: Install Gatsby CLI
+        run: npm install -g gatsby-cli
+
+      - name: Install other depedancies
+        run: npm install @parcel/watcher
+
+      - name: Build
+        run: gatsby build
+
+      - name: Verify build
+        run: ls -la public
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: public

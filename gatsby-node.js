@@ -13,13 +13,16 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     if (node.internal.type === `Mdx`) {
         const slug = createFilePath({ node, getNode, basePath: `pages` });
         createNodeField({ node, name: `slug`, value: slug });
+        createNodeField({ node, name: `name`, value: node.frontmatter.name });
+        createNodeField({ node, name: `next`, value: node.frontmatter.next });
+        createNodeField({ node, name: `previous`, value: node.frontmatter.previous });
     }
 }
 
 exports.createPages = async ({ graphql, actions: { createPage }, reporter }) => {
     const results = await graphql(`
     query {
-        projects: allMdx(filter: {fields: {slug: {regex: "\/devlog\/"}}}) {
+        blog: allMdx(filter: {fields: {slug: {regex: "\/blog\/"}}}, sort: {order: DESC, fields: frontmatter___publishedDate}) {
             nodes {
                 id
                 fields {
@@ -27,17 +30,6 @@ exports.createPages = async ({ graphql, actions: { createPage }, reporter }) => 
                 }
                 frontmatter {
                     articles
-                }
-                internal {
-                    contentFilePath
-                }              
-            }
-        }
-        blogs: allMdx(filter: {fields: {slug: {regex: "\/blogs\/"}}}, sort: {order: DESC, fields: frontmatter___publishedDate}) {
-            nodes {
-                id
-                fields {
-                    slug
                 }
                 internal {
                     contentFilePath
@@ -51,38 +43,20 @@ exports.createPages = async ({ graphql, actions: { createPage }, reporter }) => 
         reporter.panicOnBuild("Error loading MDX result", results.errors)
     }
 
-    const projectTemplate = path.resolve(`./src/templates/project.js`)
-    const blogTemplate = path.resolve(`./src/templates/blogTemplate.js`)
+    const blogTemplate = path.resolve(`./src/templates/blog.js`)
 
-    const projects = results.data.projects.nodes
-    const blogs = results.data.blogs.nodes
-    
-    projects.forEach(node => {
-        createPage({
-            path: node.fields.slug,
-            component: `${projectTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
-            context: {
-                // Data passed to context is available
-                // in page queries as GraphQL variables.
-                id: node.id,
-                slug: node.fields.slug,
-                articles: node.frontmatter.articles.map(a => `/devlog/${a}/`)
-            }
-        })
-    })
+    const blogs = results.data.blog.nodes
 
     blogs.forEach((node, index) => {
-        let articles = [];
-        if (blogs.length > index + 1) {
-            articles.push(blogs[index + 1].fields.slug.slice(1, -1))
-        }
+
+        console.log(node.frontmatter.articles)
         createPage({
             path: node.fields.slug,
             component: `${blogTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
             context: {
                 id: node.id,
                 slug: node.fields.slug,
-                articles: articles,
+                articles: node.frontmatter.articles,
             }
         })
     })

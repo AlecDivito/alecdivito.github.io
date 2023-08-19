@@ -2,14 +2,16 @@
     {
         "section": "Fluent / Current Stack",
         "skills": [
+            "Rust",
             "Typescript",
             "Javascript",
             "Angular 2+",
             "React",
             "Node.js",
             "HTML5",
+            "Python",
+            "SQL",
             "CSS3",
-            "Rust",
             "C++",
             "Git"
         ]
@@ -20,7 +22,6 @@
             "C#",
             "IOS",
             "Swift",
-            "Python",
             "Java",
             "GO",
             "C"

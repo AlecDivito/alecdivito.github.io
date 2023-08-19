@@ -10,11 +10,6 @@
         "ready": true
     },
     {
-        "title": "DevLog",
-        "link": "/devlog",
-        "ready": true
-    },
-    {
         "title": "Blog",
         "link": "/blog",
         "ready": true

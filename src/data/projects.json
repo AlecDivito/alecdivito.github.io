@@ -22,11 +22,11 @@
             "Handlebars"
         ],
         "description": "Run web assembly in the cloud. Why write your serverless functions in any language.",
-        "shortDescription": "Run stateful web assembly functions in the cloud. Fast and easy.",
+        "shortDescription": "Run stateful web assembly functions in the cloud 🚀",
         "blogPost": [
             {
                 "title": "Update #1: History of wasmcompute",
-                "content": "/devlog/wasmcompute",
+                "content": "/blog/2021-06-01_wasmcompute/",
                 "year": 2020,
                 "month": 12,
                 "day": 1
@@ -52,18 +52,18 @@
             "HTML"
         ],
         "description": "This website! Learning gatsby (which is pretty cool) and creating a blog and resume website at the same time!",
-        "shortDescription": "This website, made with gatsby",
+        "shortDescription": "This website, made with gatsby (for better or for worse) 😅",
         "blogPost": [
             {
                 "title": "Update #2: Converting a portfolio into a blog",
-                "content": "/devlog/website-update-1",
+                "content": "/blog/2022-04-10_website-update-1",
                 "year": 2021,
                 "month": 1,
                 "day": 10
             },
             {
                 "title": "Update #1: Iterating designs to my first portfolio",
-                "content": "/devlog/website",
+                "content": "/blog/2017-09-05_website/",
                 "year": 2018,
                 "month": 9,
                 "day": 10
@@ -92,11 +92,11 @@
             "HTML"
         ],
         "description": "A Minesweeper clone inspired by Google's proxx.app. Added more features on top of the game.",
-        "shortDescription": "Minesweeper clone inspired by Googles proxx",
+        "shortDescription": "Minesweeper clone inspired by Googles proxx ⛳️",
         "blogPost": [
             {
                 "title": "Designing and creating a minesweeper clone",
-                "content": "/devlog/bomb-finder",
+                "content": "/blog/2019-09-26_bomb-finder/",
                 "year": 2019,
                 "month": 8,
                 "day": 26
@@ -120,11 +120,11 @@
             "Binary Files"
         ],
         "description": "A small library that focuses on creating a library on crates.io and hopefully a webassembly one on npm. Ability to read, edit and write bitmaps.",
-        "shortDescription": "Rust library that is able to read, write, and edit bitmaps.",
+        "shortDescription": "Rust library that is able to read, write, and edit bitmaps 🗾",
         "blogPost": [
             {
                 "title": "Making my first library with Rust",
-                "content": "/devlog/rustbitmap",
+                "content": "/blog/2019-12-18_rustbitmap/",
                 "year": 2019,
                 "month": 8,
                 "day": 29
@@ -132,29 +132,6 @@
         ],
         "githubLink": "https://github.com/AlecDivito/rusty-bitmap",
         "siteLink": "https://crates.io/crates/rustbitmap"
-    },
-    {
-        "title": "Tetris Clone",
-        "stage": "In Progress",
-        "status": "active",
-        "image": "./images/tetris.png",
-        "logo": "./images/tetris.png",
-        "startDate": "May 2019",
-        "endDate": "Present",
-        "totalTime": "4 months+",
-        "technologies": [
-            "Rust",
-            "Web assembly",
-            "Typescript",
-            "Canvas2d",
-            "CSS",
-            "HTML"
-        ],
-        "description": "A tetris clone focusing on using webassembly compiled by rust. Used to learn advantages using webassembly beside javascript development",
-        "shortDescription": "Tetris clone with a focus on developing the logic in rust and wasm",
-        "blogPost": [],
-        "githubLink": "https://github.com/AlecDivito/weby-rusty-tetris",
-        "siteLink": "https://alecdivito.github.io/weby-rusty-tetris/"
     },
     {
         "title": "Budgetise",
@@ -182,7 +159,7 @@
         "blogPost": [
             {
                 "title": "Capstone project for SDNE at Sheridan College",
-                "content": "/devlog/budgetise",
+                "content": "/blog/2018-12-18_budgetise/",
                 "year": 2018,
                 "month": 12,
                 "day": 28

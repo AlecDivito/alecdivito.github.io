@@ -1,8 +1,48 @@
 [
     {
+        "website": null,
+        "startDate": "Apr 2023",
+        "endDate": "Present",
+        "company": "Royal Bank of Canada",
+        "position": "Senior Cloud Developer",
+        "description": "Bringing Terraform to all bank employees. Our team focuses on creating providing bank safe and secure Terraform modules that are then accessible through Terraform Enterprise. We use Python micro services to create a gitOps flow that users of our platform hook into to update their infrastructure.",
+        "logo": "./images/work/rbc.png",
+        "utilized": [
+            "Python",
+            "Bash",
+            "Golang",
+            "Angular",
+            "Azure",
+            "Kubernetes",
+            "Docker",
+            "Jenkins"
+        ]
+    },
+    {
+        "website": "https://ownr.co",
+        "startDate": "Jan 2022",
+        "endDate": "Apr 2023",
+        "company": "Ownr",
+        "position": "Full Stack Developer",
+        "description": "Worked on multiple projects, The most exciting one is leading development of a micro-service for building and sending ownr specific emails. Helped with hiring (and enjoyed it) while also learning about Ownr's infrastructure on Heroku.",
+        "logo": "./images/work/ownr.png",
+        "utilized": [
+            "Node.js",
+            "Javascript",
+            "Typescript",
+            "React",
+            "Heroku",
+            "RabbitMQ",
+            "Postgres",
+            "Github",
+            "CircleCI",
+            "Jest"
+        ]
+    },
+    {
         "website": "https://hackademics.club",
         "startDate": "Sept 2020",
-        "endDate": "Present",
+        "endDate": "Sept 2021",
         "company": "Hackademics Club, Sheridan College",
         "position": "Vice President",
         "description": "Raised $+12,000 for Hackville! Lead team of 4 to develop open source solutions for Hackademics club. Helped to created a podcast focused on spreading the word about hackathons and Hackademics.",
