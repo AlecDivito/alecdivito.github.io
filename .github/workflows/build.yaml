@@ -22,13 +22,24 @@ jobs:
         run: |
           sudo apt-get -y install make gcc python3
 
+      - name: Caching Gatsby
+        id: gatsby-cache-build
+        uses: actions/cache@v2
+        with:
+          path: |
+            public
+            .cache
+          key: ${{ runner.os }}-gatsby-build-${{ github.run_id }}
+          restore-keys: |
+            ${{ runner.os }}-gatsby-build-
+
       - name: Install Project Dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: Install Gatsby CLI
         run: npm install -g gatsby-cli
 
-      - name: Install other depedancies
+      - name: Install other dependencies
         run: npm install @parcel/watcher
 
       - name: Build
