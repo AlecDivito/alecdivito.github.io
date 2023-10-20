@@ -23,7 +23,7 @@
     "gatsby-transformer-sharp": "^5.11.0",
     "prismjs": "^1.29.0",
     "prop-types": "^15.8.1",
-    "react": "^18.2.0",
+    "react": "^0.0.0-experimental-c8b778b7f-20220825",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "remark-gfm": "^1.0.0",
